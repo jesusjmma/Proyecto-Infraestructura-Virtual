@@ -19,3 +19,9 @@ Los clientes de la aplicación podrán ser cualesquiera personas que quieran org
 ## Configuración del repositorio
 1.     [Claves SSH](config/ClavesSSH.png)
 2.     [Configuración Git](config/ConfiguracionGit.png)
+
+## Historias de usuarios
+Se han creado ciertas historias de usuario que se pueden ver en los issues [HU1](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/issues/2), [HU2](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/issues/3) y [HU3](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/issues/4), así como en el documento [user-stories.md](docs/user-stories.md).
+
+## Milestones
+Se han definido 4 milestones que son [M1](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/1), [M2](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/2), [M3](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/3) y [M4](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/4) y que también se encuentran en el documento [milestones.md](docs/milestones.md).
