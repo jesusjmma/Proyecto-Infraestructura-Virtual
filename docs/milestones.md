@@ -1,6 +1,6 @@
 # Milestones
 
-## [M1] Modulo que defina la estructura de datos
+## [M0] Modulo que defina la estructura de datos
 
 Enlace al milestone: [M0](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/1)
 
@@ -13,7 +13,7 @@ Se tienen que poder gestionar, al menos, las siguientes estructuras de datos:
 - Notificaciones
 
 
-## [M2] Implementación de la lógica de negocio
+## [M1] Implementación de la lógica de negocio
 
 Enlace al milestone: [M1](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/2)
 
@@ -25,7 +25,7 @@ La aplicación deberá permitir, al menos, las siguientes acciones:
 - Generar y visualizar los gráficos de los gastos compartidos (incluyendo también los filtros antes mencionados).
 
 
-## [M3] Interfaz de usuario
+## [M2] Interfaz de usuario
 
 Enlace al milestone: [M2](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/3)
 
@@ -34,7 +34,7 @@ La aplicación deberá permitir:
 - La visualización de un perfil de usuario con los saldos del mismo.
 
 
-## [M4] Despliegue en la nube
+## [M3] Despliegue en la nube
 
 Enlace al milestone: [M3](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/4)
 
