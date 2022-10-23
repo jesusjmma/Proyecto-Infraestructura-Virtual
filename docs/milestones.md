@@ -1,6 +1,6 @@
 # Milestones
 
-## [M0] Modulo que defina la estructura de datos
+## [M0] Representación del modelo del problema
 
 Enlace al milestone: [M0](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/milestone/1)
 
