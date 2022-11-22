@@ -24,14 +24,17 @@ class usuario:
         Asigna una nueva deuda al usuario
         Param deuda: nueva deuda
         '''
-        pass
+
+        #Se inserta sii la deuda corresponde con el usuario
+        if(deuda.nickUsuarioQuePaga() == self.obtenerNickUsuario()):
+            self.__deudas.append(deuda)
 
     def eliminarDeuda(self, deuda):
         '''
         Elimina una deuda al usuario, a traves del objeto
         Param deuda: deuda a eliminar
         '''
-        pass
+        self.__deudas.remove(deuda)
 
     def eliminarDeudaPorId(self,idDeuda):
         '''
@@ -39,6 +42,15 @@ class usuario:
         Param idDeuda: id de deuda a Eliminar
         '''
         pass
+
+    #=================================================================
+
+    def obtenerNickUsuario(self):
+        '''
+        Recupera el nick del usuario
+        Return: nick usuario
+        '''
+        return self.__usuario.nickname
 
     #=================================================================
     
