@@ -4,7 +4,7 @@ from deuda import deuda
 class usuario:
     '''
     Entidad que representa a un usuario, con sus datos identificativos
-    y ademas contiene la informacion de todas las deudas que tiene pendientes
+    y con la informacion de todas las deudas que tiene pendientes
     '''
     
     def __init__(self, u):
@@ -58,7 +58,20 @@ class usuario:
         '''
         Imprime la lista de deudas asociadas al usuario
         '''
-        pass
+        output = ""
+        output += "=========================================================\n"
+        if self.__deudas:
+            for deuda in self.__deudas:
+                output += "-> Fecha: " + deuda.obtenerFechaDeuda() + " || "
+                output += "Importe: " + str(deuda.importe) + " || "
+                output += "Concepto: " + deuda.concepto + " || "
+                output += "Pagar A: " + deuda.nickUsuarioDeber() + "\n"
+
+            output += "\n"
+        else:
+            output += "-> No hay deudas pendientes de pago.\n"
+
+        print(output)
 
     def printCantidadTotalDeber(self):
         '''
@@ -74,4 +87,20 @@ class usuario:
 
 #Test de clase
 if __name__ == "__main__":
-    pass
+    infU1 = infoUsuario(1,"danielsp","Daniel","Pérez Ruiz")
+    infU2 = infoUsuario(2,"pnl","Pablo","Nieto López")
+    infU3 = infoUsuario(3,"jac","Jose","Abela Cánovas")
+
+    d1 = deuda(1,infU2,infU1,10.5,"test deuda1")
+    d2 = deuda(2,infU2,infU3,5.5,"test deuda2")
+
+    u1 = usuario(infU1)
+
+    u1.insertarDeuda(d1)
+    u1.insertarDeuda(d2)
+
+    u1.printListaDeudas()
+
+    u1.eliminarDeuda(d1)
+
+    u1.printListaDeudas()
