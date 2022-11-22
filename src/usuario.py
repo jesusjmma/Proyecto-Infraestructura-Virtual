@@ -36,13 +36,6 @@ class usuario:
         '''
         self.__deudas.remove(deuda)
 
-    def eliminarDeudaPorId(self,idDeuda):
-        '''
-        Elimina una deuda al usuario, a traves de su id
-        Param idDeuda: id de deuda a Eliminar
-        '''
-        pass
-
     #=================================================================
 
     def obtenerNickUsuario(self):
@@ -51,14 +44,15 @@ class usuario:
         Return: nick usuario
         '''
         return self.__usuario.nickname
-
-    #=================================================================
     
-    def printListaDeudas(self):
+    def obtenerListaDeudasString(self):
         '''
-        Imprime la lista de deudas asociadas al usuario
+        Obtiene en formato string la lista de deudas del usuario
+        Return: String con la lista de deudas de usuario
         '''
         output = ""
+        output += "=========================================================\n"
+        output += "Lista de deudas:\n"
         output += "=========================================================\n"
         if self.__deudas:
             for deuda in self.__deudas:
@@ -71,19 +65,47 @@ class usuario:
         else:
             output += "-> No hay deudas pendientes de pago.\n"
 
-        print(output)
+        return output
+    
+    def obtenerCantidadTotalDeberString(self):
+        '''
+        Calcula el total de dinero que debe el usuario (sin distincion de
+        a quien debe pagar)
+        Return suma de dinero de todas las deudas (en String)
+        '''
+        total = 0.0
+
+        if self.__deudas:
+            for deuda in self.__deudas:
+                total += deuda.importe
+
+        return str(total) + " €"
+
+    #=================================================================
+    
+    def printListaDeudas(self):
+        '''
+        Imprime la lista de deudas asociadas al usuario
+        '''
+        print(self.obtenerListaDeudasString())
 
     def printCantidadTotalDeber(self):
         '''
         Imprime por pantalla la cantidad total a deber
         '''
-        pass
+        print("-> Dinero total a deber: " + self.obtenerCantidadTotalDeberString())
 
     def __str__(self):
         '''
         Representacion de la clase a formato legible
         '''
-        pass
+        output = ""
+        output += self.__usuario.__str__() + "\n"
+        output += self.obtenerListaDeudasString()
+        output += "-> Dinero total a deber: " + self.obtenerCantidadTotalDeberString()
+
+        return output
+
 
 #Test de clase
 if __name__ == "__main__":
@@ -93,14 +115,12 @@ if __name__ == "__main__":
 
     d1 = deuda(1,infU2,infU1,10.5,"test deuda1")
     d2 = deuda(2,infU2,infU3,5.5,"test deuda2")
+    d3 = deuda(1,infU3,infU1,7.70,"test deuda3")
 
     u1 = usuario(infU1)
 
     u1.insertarDeuda(d1)
     u1.insertarDeuda(d2)
+    u1.insertarDeuda(d3)
 
-    u1.printListaDeudas()
-
-    u1.eliminarDeuda(d1)
-
-    u1.printListaDeudas()
+    print(u1)
