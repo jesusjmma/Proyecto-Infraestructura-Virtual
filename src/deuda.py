@@ -36,9 +36,9 @@ class deuda:
         output += "Deber a: " + self.usuarioDeber.nickname + "\n"
         output += "Paga la deuda: " + self.usuarioDeudor.nickname + "\n"
         output += "=============================================\n"
-        output += " -- Cantidad: " + str(self.importe) + " €\n"
+        output += " -- Importe: " + str(self.importe) + " €\n"
         output += " -- Concepto: " + self.concepto + "\n"
-        output += " -- Fecha: " + self.fecha.strftime("%m/%d/%Y") + "\n"
+        output += " -- Fecha: " + self.obtenerFechaDeuda() + "\n"
 
         return output
 
@@ -59,6 +59,13 @@ class deuda:
         Return: nickname del usuario que paga
         '''
         return self.usuarioDeudor.nickname
+    
+    def obtenerFechaDeuda(self):
+        '''
+        Metodo para obtener la fecha de la deuda en formato string
+        Return: fecha en string
+        '''
+        return self.fecha.strftime("%m/%d/%Y")
         
 
 #Test de clase
