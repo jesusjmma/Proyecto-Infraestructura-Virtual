@@ -63,10 +63,4 @@ class deuda:
 
 #Test de clase
 if __name__ == "__main__":
-    u1 = usuario(1,"danielsp","Daniel","Pérez Ruiz")
-    u2 = usuario(2,"pablonl","Pablo","Nieto López")
-
-    d1 = deuda(1,u1,u2,10.5,"test")
-
-    print("Recibe deuda: " + d1.nickUsuarioDeber())
-    print("Paga deuda: " + d1.nickUsuarioQuePaga())
+    pass
