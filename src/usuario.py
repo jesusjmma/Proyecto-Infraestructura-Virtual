@@ -10,7 +10,19 @@ class usuario:
     nombre: str
     apellidos: str
 
+    def __str__(self):
+        '''
+        Representacion de la clase a formato legible
+        '''
+        output = ""
+        output += "=============================================\n"
+        output += "ID Usuario: " + str(self.id) + "\n"
+        output += "=============================================\n"
+        output += " -- Nickname: " + self.nickname + "\n"
+        output += " -- Nombre: " + self.nombre + "\n"
+        output += " -- Apellidos: " + self.apellidos + "\n"
 
+        return output
     
 #Test de clase
 if __name__ == "__main__":
