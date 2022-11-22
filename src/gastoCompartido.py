@@ -24,6 +24,42 @@ class gastoCompartido:
             usuarios.append(usuario)
 
         return listaUsuarios
+
+    def __obtenerNicksUsuarios(self):
+        '''
+        Para la lista de usuarios que participan en el gasto compartido,
+        se genera una lista con los nicks de los usuarios
+        Return: lista de nicks de usuario participantes
+        '''
+        nicks = []
+        for usuario in self.__usuarios:
+            nicks.append(usuario.nickname)
+
+        return nicks
+    
+    def __buscarUsuarioPorNick(self,nick):
+        '''
+        Para la lista de usuarios que participan en el gasto compartido,
+        se permite buscar un usuario a traves de su nick
+        Param nick: nickname del usuario a buscar
+        Return: copia del usuario a buscar. NULL en otro caso
+        '''
+        pass
+
+    def __obtenerTotalDeudas(self):
+        '''
+        Para este gasto compartido, se devuelve el numero total de
+        deudas existentes
+        Return: numero total de deudas
+        '''
+        return len(self.__deudas)
+    
+    def __generarIDDeuda(self):
+        '''
+        
+        '''
+        pass
+
     
     #============================================================================
 
@@ -39,6 +75,29 @@ class gastoCompartido:
         self.__usuarios = self.__init__usuarios(usuarios)
         self.__deudas = []
 
+    #============================================================================
+
+    def generarDeuda(self,nickURecibe,nickUPaga,importe,concepto):
+        '''
+        Dentro de los usuarios que participan en el gasto compartido, este
+        metodo permite generar una deuda comun que se insertara a la lista
+        de deudas
+        Param nickURecibe: nickname del usuario al que hay que pagar
+        Param nickUPaga: nickname del usuario que paga la deuda
+        Param importe: importe de la deuda
+        Param concepto: concepto de la deuda
+
+        Precond: Si alguno de los dos nicks son de usuarios que no participan,
+        la insercion de la deuda no sera realizada
+        '''
+        if nickURecibe in self.__obtenerNicksUsuarios() and nickUPaga in self.__obtenerNicksUsuarios():
+            idDeuda = self.__generarIDDeuda()
+            usuarioDeber = self.__buscarUsuarioPorNick(nickURecibe)
+            usuarioDeudor = self.__buscarUsuarioPorNick(nickUPaga)
+            
+            self.__deudas.append(deuda(idDeuda,usuarioDeber,usuarioDeudor,importe,concepto))
+
+            
     #============================================================================
 
     def __str__(self):
