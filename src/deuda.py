@@ -8,10 +8,10 @@ class deuda:
     Clase que representa la deuda de un usuario a otro.
     '''
     id: int
-    #Usuario que debe pagar la deuda
-    usuarioDeudor: usuario
     #Usuario que recibe la deuda
     usuarioDeber: usuario
+    #Usuario que debe pagar la deuda
+    usuarioDeudor: usuario    
 
     importe: float
     concepto: str
@@ -41,6 +41,24 @@ class deuda:
         output += " -- Fecha: " + self.fecha.strftime("%m/%d/%Y") + "\n"
 
         return output
+
+    # ===============================================================
+
+    def nickUsuarioDeber(self):
+        '''
+        Metodo para obtener el nickname del usuario a quien debe
+        esta deuda
+        Return: nickname de usuario a deber
+        '''
+        return self.usuarioDeber.nickname
+
+    def nickUsuarioQuePaga(self):
+        '''
+        Metodo para obtener el nickname del usuario que paga
+        esta deuda
+        Return: nickname del usuario que paga
+        '''
+        return self.usuarioDeudor.nickname
         
 
 #Test de clase
@@ -50,6 +68,5 @@ if __name__ == "__main__":
 
     d1 = deuda(1,u1,u2,10.5,"test")
 
-    print(d1)
-
-    
+    print("Recibe deuda: " + d1.nickUsuarioDeber())
+    print("Paga deuda: " + d1.nickUsuarioQuePaga())
