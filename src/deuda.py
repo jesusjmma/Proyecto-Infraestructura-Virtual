@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from datetime import datetime as dt
-from usuario import usuario
+from infoUsuario import infoUsuario
 
 @dataclass(frozen=False)
 class deuda:
@@ -9,9 +9,9 @@ class deuda:
     '''
     id: int
     #Usuario que recibe la deuda
-    usuarioDeber: usuario
+    usuarioDeber: infoUsuario
     #Usuario que debe pagar la deuda
-    usuarioDeudor: usuario    
+    usuarioDeudor: infoUsuario    
 
     importe: float
     concepto: str
