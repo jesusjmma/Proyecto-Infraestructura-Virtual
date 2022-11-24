@@ -33,9 +33,7 @@ class gastoCompartido:
         se genera una lista con los nicks de los usuarios
         Return: lista de nicks de usuario participantes
         '''
-        nicks = []
-        for usuario in self.__usuarios:
-            nicks.append(usuario.nickname.lower())
+        nicks = [usuario.obtenerInfoUsuario().nickname.lower() for usuario in self.__usuarios]
 
         return nicks
     
@@ -61,14 +59,6 @@ class gastoCompartido:
         Return: lista de gastos asociados al usuario.
         '''
         return [gasto for gasto in self.__gastos if gasto.nickUsuarioGasto() == nick]
-
-    def __obtenerTotalGastos(self):
-        '''
-        Para este gasto compartido, se devuelve el numero total de
-        gastos existentes
-        Return: numero total de gastos
-        '''
-        return len(self.__gastos)
     
     def __generarIDGasto(self):
         '''
@@ -241,14 +231,6 @@ class gastoCompartido:
             idNuevoGasto = self.__generarIDGasto()
             self.__gastos.append(gasto(idNuevoGasto,usuarioCandidato.obtenerInfoUsuario(),importe,concepto))
 
-    def borrarGastosPorNick(self,nick):
-        '''
-        Metodo para borrar todos los gastos realizados por un usuari
-        especificado por su nick
-        Param nick: Nick de usuario
-        '''
-        pass
-
     def obtenerGastosPorNick(self,nickname):
         '''
         Metodo que permite buscar todos los gastos realizados por un
@@ -278,8 +260,8 @@ class gastoCompartido:
         '''
         if nickURecibe in self.__obtenerNicksUsuarios() and nickUPaga in self.__obtenerNicksUsuarios():
             idDeuda = self.__generarIDDeuda()
-            usuarioDeber = self.__buscarUsuarioPorNick(nickURecibe)
-            usuarioDeudor = self.__buscarUsuarioPorNick(nickUPaga)
+            usuarioDeber = self.__buscarUsuarioPorNick(nickURecibe).obtenerInfoUsuario()
+            usuarioDeudor = self.__buscarUsuarioPorNick(nickUPaga).obtenerInfoUsuario()
             
             self.__deudas.append(deuda(idDeuda,usuarioDeber,usuarioDeudor,importe,concepto))
 
@@ -323,12 +305,6 @@ class gastoCompartido:
         output += "=========================================================\n"
         output += self.__obtenerListaDeudasString()
         print(output)
-
-    def __str__(self):
-        '''
-        Representacion de la clase a formato legible
-        '''
-        pass
         
 #Test de clase
 if __name__ == "__main__":
@@ -356,4 +332,6 @@ if __name__ == "__main__":
 
     gastoC1.imprimirListaGastos()
 
-    gastoC1.imprimirListaGastos("danielsp")
+    gastoC1.generarDeuda("danielsp","pnl",20,"Test")
+
+    gastoC1.imprimirListaDeudas()
