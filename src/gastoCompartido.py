@@ -72,8 +72,13 @@ class gastoCompartido:
         '''
         pass
 
-
-
+    def __generarIDUsuario(self):
+        '''
+        Metodo que permite obtener un identificador unico para un usaurio
+        participante en este gasto compartido
+        Return: numero identificador
+        '''
+        pass
     
     #============================================================================
 
@@ -89,6 +94,28 @@ class gastoCompartido:
         self.__fecha = dt.today()
         self.__usuarios = self.__init__usuarios(usuarios)
         self.__gastos = []
+
+    #============================================================================
+        
+    def registrarUsuario(self,nickname,Nombre,Apellidos):
+        '''
+        Metodo para registrar usuarios participantes en este gasto compartido
+        Param nickname: Nick del nuevo usuario participante
+        Param nombre: Nombre del nuevo usuario participante
+        Param apellidos: Apellidos del nuevo usuario participante
+
+        Precond: Si el nickname del usuario ya existe, no se registra
+        '''
+        pass
+
+    def eliminarUsuario(self,nick):
+        '''
+        Metodo para eliminar usuarios participantes en el gasto a traves de nick
+        Param nick: Nick del usuario a eliminar
+
+        Precond: Si el nick no pertenece a ningun usuario presente, no se borra nada
+        '''
+        pass
 
     #============================================================================
         
