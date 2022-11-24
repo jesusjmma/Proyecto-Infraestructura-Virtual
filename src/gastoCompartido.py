@@ -80,10 +80,61 @@ class gastoCompartido:
         Return: numero identificador
         '''
         pass
+
+    #============================================================================
+
+    def __obtenerListaUsuariosString(self):
+        '''
+        Metodo que permite obtener en formato string la lista de usuarios
+        participantes del gasto compartido
+        Return: lista de usuarios en string
+        '''
+        output = ""
+
+        for usuario in self.__usuarios:
+            output += "Nickname: " + usuario.nickname + " || "
+            output += "Nombre: " + usuario.nickname + " || "
+            output += "Apellidos: " + usuario.nickname + "\n"
+
+        output += "\n"
+
+        return output
+    
+    def __obtenerListaGastosString(self):
+        '''
+        Metodo que permite obtener en formato string la lista de gastos
+        realizados por los participantes en el gasto compartido
+        Return: lista de gastos en string
+        '''
+        output = ""
+
+        for gasto in self.__gastos:
+            output += "Pagado por: " + gasto.nickUsuarioGasto() + " || "
+            output += "Importe: " + gasto.importe + " || "
+            output += "Concepto: " + gasto.concepto + "\n"
+
+        output += "\n"
+
+    def __obtenerListaDeudasString(self):
+        '''
+        Metodo que permite obtener en formato string la lista de deudas
+        realizadas por los participantes en el gasto compartido
+        Return: lista de deudas en string
+        '''
+        output = ""
+
+        for deuda in self.__deudas:
+            output += "Fecha: " + deuda.obtenerFechaDeuda() + " || "
+            output += "Importe: " + str(deuda.importe) + " || "
+            output += "Concepto: " + deuda.concepto + " || "
+            output += "Pagar A: " + deuda.nickUsuarioDeber() + " || "
+            output += "Quien Paga: " + deuda.nickUsuarioQuePaga() + "\n"
+
+        output += "\n"
     
     #============================================================================
 
-    def __init__(self,id,nombre,usuarios):
+    def __init__(self,id,nombre,usuarios=[]):
         '''
         Constructor de la clase. Se define un numero identificador del gasto
         compartido, un nombre, una fecha en la que se produjo el gasto compartido,
@@ -95,6 +146,7 @@ class gastoCompartido:
         self.__fecha = dt.today()
         self.__usuarios = self.__init__usuarios(usuarios)
         self.__gastos = []
+        self.__deudas = []
 
     #============================================================================
         
@@ -177,6 +229,40 @@ class gastoCompartido:
 
             
     #============================================================================
+            
+    def imprimirListaUsuarios(self):
+        '''
+        Metodo que imprime la lista de usuarios participantes en este gasto
+        compartido.
+        '''
+        output = ""
+        output += "=========================================================\n"
+        output += "Lista de usuarios:\n"
+        output += "=========================================================\n"
+        output += self.__obtenerListaUsuariosString()
+        print(output)
+
+    def imprimitListaGastos(self):
+        '''
+        Metodo que imprime la lista de gastos realizados en este gasto compartido
+        '''
+        output = ""
+        output += "=========================================================\n"
+        output += "Lista de gastos:\n"
+        output += "=========================================================\n"
+        output += self.__obtenerListaGastosString()
+        print(output)
+
+    def imprimirListaDeudas(self):
+        '''
+        Metodo que imprime la lista de de deudas realizadas en este gasto compartido
+        '''
+        output = ""
+        output += "=========================================================\n"
+        output += "Lista de deudas:\n"
+        output += "=========================================================\n"
+        output += self.__obtenerListaDeudasString()
+        print(output)
 
     def __str__(self):
         '''
