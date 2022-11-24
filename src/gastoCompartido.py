@@ -1,5 +1,6 @@
 from usuario import usuario
 from deuda import deuda
+from gasto import gasto
 from datetime import datetime as dt
 
 class gastoCompartido:
@@ -46,13 +47,13 @@ class gastoCompartido:
         '''
         pass
 
-    def __obtenerTotalDeudas(self):
+    def __obtenerTotalGastos(self):
         '''
         Para este gasto compartido, se devuelve el numero total de
-        deudas existentes
-        Return: numero total de deudas
+        gastos existentes
+        Return: numero total de gastos
         '''
-        return len(self.__deudas)
+        return len(self.__gastos)
     
     def __generarIDDeuda(self):
         '''
@@ -67,13 +68,13 @@ class gastoCompartido:
         '''
         Constructor de la clase. Se define un numero identificador del gasto
         compartido, un nombre, una fecha en la que se produjo el gasto compartido,
-        una lista de usuarios y una lista comun de deudas
+        una lista de usuarios y una lista comun de gastos
         '''
         self.__id = id
         self.__nombre = nombre
         self.__fecha = dt.today()
         self.__usuarios = self.__init__usuarios(usuarios)
-        self.__deudas = []
+        self.__gastos = []
 
     #============================================================================
 
