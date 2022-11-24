@@ -52,6 +52,15 @@ class gastoCompartido:
             return usuarioCandidato[0]
         else:
             return None
+        
+    def __buscarGastosPorNick(self,nick):
+        '''
+        Para la lista de usuarios que participan en el gasto compartido,
+        se permite buscar todos los gastos asociados a un usuario a traves de su nick
+        Param nick: nicnkame del usuario del que queremos sus gastos
+        Return: lista de gastos asociados al usuario.
+        '''
+        return [gasto for gasto in self.__gastos if gasto.nickUsuarioGasto() == nick]
 
     def __obtenerTotalGastos(self):
         '''
@@ -125,21 +134,31 @@ class gastoCompartido:
 
         return output
     
-    def __obtenerListaGastosString(self):
+    def __obtenerListaGastosString(self,nickname=""):
         '''
         Metodo que permite obtener en formato string la lista de gastos
         realizados por los participantes en el gasto compartido
-        Return: lista de gastos en string
+        Param nickname: Si se especifica un nick de usuario, se recuperan
+        los gastos unicamente de una persona. Si el nick no pertenece a ningun
+        usuario, entonces se devuelve la lista general
+        Return: lista de gastos en string (todos o de un usuario concreto)
         '''
         output = ""
 
-        for gasto in self.__gastos:
+        if nickname != "" and self.__buscarUsuarioPorNick(nickname) is not None:
+            gastos = self.__buscarGastosPorNick(nickname)
+        else:
+            gastos = self.__gastos
+
+        for gasto in gastos:
             output += "Id: " + str(gasto.id) + " || "
             output += "Pagado por: " + gasto.nickUsuarioGasto() + " || "
-            output += "Importe: " + gasto.importe + " || "
+            output += "Importe: " + str(gasto.importe) + "€ || "
             output += "Concepto: " + gasto.concepto + "\n"
 
         output += "\n"
+
+        return output
 
     def __obtenerListaDeudasString(self):
         '''
@@ -158,6 +177,8 @@ class gastoCompartido:
             output += "Quien Paga: " + deuda.nickUsuarioQuePaga() + "\n"
 
         output += "\n"
+
+        return output
     
     #============================================================================
 
@@ -205,16 +226,22 @@ class gastoCompartido:
 
     #============================================================================
         
-    def generarGasto(self,infoUsuario,importe,concepto):
+    def generarGasto(self,nickname,importe,concepto):
         '''
         Metodo para generar un gasto realizado por un usuario
-        Param infoUsuario: Informacion de usuario que realiza gasto
+        Param nickname: Nickname del usuario que genera el gasto
         Param importe: Cantidad del gasto
         Param concepto: Descripcion del gasto
-        '''
-        pass
 
-    def borrarGastoPorNick(self,nick):
+        Precond: si el nick del usuario no se encuentra dentro de los usuarios
+        participantes, no se almacenara el nuevo gasto
+        '''
+        usuarioCandidato = self.__buscarUsuarioPorNick(nickname)
+        if(usuarioCandidato is not None):
+            idNuevoGasto = self.__generarIDGasto()
+            self.__gastos.append(gasto(idNuevoGasto,usuarioCandidato.obtenerInfoUsuario(),importe,concepto))
+
+    def borrarGastosPorNick(self,nick):
         '''
         Metodo para borrar todos los gastos realizados por un usuari
         especificado por su nick
@@ -222,15 +249,17 @@ class gastoCompartido:
         '''
         pass
 
-    def buscarGastosPorNick(self,nick):
+    def obtenerGastosPorNick(self,nickname):
         '''
         Metodo que permite buscar todos los gastos realizados por un
         usuario especificado por su nick
         Param nick: Nick de usuario
         Return: Lista de gastos asociados al usuario. Si usuario no participa
-        en este gastoCompartido, se devuelve array vacio
+        en este gastoCompartido, se devuelve None
         '''
-        pass
+        usuarioCandidato = self.__buscarUsuarioPorNick(nickname)
+        if(usuarioCandidato is not None):
+            return self.__buscarGastosPorNick(nickname)
         
     #============================================================================
 
@@ -269,15 +298,19 @@ class gastoCompartido:
         output += self.__obtenerListaUsuariosString()
         print(output)
 
-    def imprimitListaGastos(self):
+    def imprimirListaGastos(self,nickname=""):
         '''
-        Metodo que imprime la lista de gastos realizados en este gasto compartido
+        Metodo que imprime la lista de gastos realizados en este gasto compartido.
+        Si se especifica un nickname, permite ver los gastos asociados a un usuario
+        en concreto participante
+
+        Param nickname: nick del usuario a buscar la lista de gastos
         '''
         output = ""
         output += "=========================================================\n"
         output += "Lista de gastos:\n"
         output += "=========================================================\n"
-        output += self.__obtenerListaGastosString()
+        output += self.__obtenerListaGastosString(nickname)
         print(output)
 
     def imprimirListaDeudas(self):
@@ -306,19 +339,21 @@ if __name__ == "__main__":
     gastoC1.registrarUsuario("danielsp","Daniel","Pérez Ruiz")
     gastoC1.registrarUsuario("pnl","Pablo","Nieto López")
     gastoC1.registrarUsuario("jac","Jose","Abela Canovas")
+    #gastoC1.registrarUsuario("manaya","Martin","Anaya Quesada")
 
 
     gastoC1.imprimirListaUsuarios()
 
-    #Test de borrado/Impresion de usuarios
+    #Test de generacion de gastos
 
-    gastoC1.eliminarUsuario("pnl")
+    gastoC1.generarGasto("danielsp",5.75,"Comida")
+    gastoC1.generarGasto("pnl",20,"Alquiler")
+    gastoC1.generarGasto("jac",3,"Kebab")
+    gastoC1.generarGasto("danielsp",11,"Gasolina")
+    gastoC1.generarGasto("danielsp",0.50,"Peaje")
+    gastoC1.generarGasto("manaya",100,"Fiesta")
 
-    gastoC1.imprimirListaUsuarios()
 
-    #Test de indices
+    gastoC1.imprimirListaGastos()
 
-    gastoC1.registrarUsuario("manaya","Martin","Anaya Quesada")
-
-    gastoC1.imprimirListaUsuarios()
-
+    gastoC1.imprimirListaGastos("danielsp")
