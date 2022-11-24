@@ -25,12 +25,21 @@ class gasto:
         output += "=============================================\n"
         output += "ID Gasto: " + str(self.id) + "\n"
         output += "=============================================\n"
-        output += "Pagado por: " + self.usuario.nickname + "\n"
+        output += "Pagado por: " + self.nickUsuarioGasto() + "\n"
         output += "=============================================\n"
         output += " -- Importe: " + str(self.importe) + " €\n"
         output += " -- Concepto: " + self.concepto + "\n"
 
         return output
+    
+    # ===============================================================
+    
+    def nickUsuarioGasto(self):
+        '''
+        Metodo para obtener el nickname del usuario que paga
+        Return: nickname de usuario
+        '''
+        return self.usuario.nickname
 
 #Test de clase
 if __name__ == "__main__":
