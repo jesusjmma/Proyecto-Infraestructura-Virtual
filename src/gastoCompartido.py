@@ -43,7 +43,7 @@ class gastoCompartido:
         Para la lista de usuarios que participan en el gasto compartido,
         se permite buscar un usuario a traves de su nick
         Param nick: nickname del usuario a buscar
-        Return: copia del usuario a buscar. NULL en otro caso
+        Return: copia del usuario a buscar. None en otro caso
         '''
         pass
 
@@ -55,6 +55,15 @@ class gastoCompartido:
         '''
         return len(self.__gastos)
     
+    def __generarIDGasto(self):
+        '''
+        Metodo que permite obtener un identificador unico para un
+        gasto generado para este gasto compartido
+        Return: numero identificador
+        '''
+        pass
+    
+
     def __generarIDDeuda(self):
         '''
         Metodo que permite obtener un identificador unico para una deuda
