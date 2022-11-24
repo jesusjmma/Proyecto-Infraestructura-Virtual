@@ -1,4 +1,5 @@
 from usuario import usuario
+from infoUsuario import infoUsuario
 from deuda import deuda
 from gasto import gasto
 from datetime import datetime as dt
@@ -34,7 +35,7 @@ class gastoCompartido:
         '''
         nicks = []
         for usuario in self.__usuarios:
-            nicks.append(usuario.nickname)
+            nicks.append(usuario.nickname.lower())
 
         return nicks
     
@@ -97,7 +98,7 @@ class gastoCompartido:
 
     #============================================================================
         
-    def registrarUsuario(self,nickname,Nombre,Apellidos):
+    def registrarUsuario(self,nickname,nombre,apellidos):
         '''
         Metodo para registrar usuarios participantes en este gasto compartido
         Param nickname: Nick del nuevo usuario participante
@@ -106,16 +107,22 @@ class gastoCompartido:
 
         Precond: Si el nickname del usuario ya existe, no se registra
         '''
-        pass
+        if(self.__buscarUsuarioPorNick(nickname) is None):
+            idNuevoUsuario = self.__generarIDUsuario()
+            self.__usuarios.append(usuario(infoUsuario(idNuevoUsuario,nickname,nombre,apellidos)))
 
-    def eliminarUsuario(self,nick):
+
+    def eliminarUsuario(self,nickname):
         '''
         Metodo para eliminar usuarios participantes en el gasto a traves de nick
-        Param nick: Nick del usuario a eliminar
+        Param nickname: Nick del usuario a eliminar
 
         Precond: Si el nick no pertenece a ningun usuario presente, no se borra nada
         '''
-        pass
+
+        usuarioCandidato = self.__buscarUsuarioPorNick(nickname)
+        if(usuarioCandidato is not None):
+            self.__usuarios.remove(usuarioCandidato)
 
     #============================================================================
         
