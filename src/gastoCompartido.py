@@ -57,9 +57,13 @@ class gastoCompartido:
     
     def __generarIDDeuda(self):
         '''
-        
+        Metodo que permite obtener un identificador unico para una deuda
+        generada para este gasto compartido
+        Return: numero identificador
         '''
         pass
+
+
 
     
     #============================================================================
@@ -68,7 +72,8 @@ class gastoCompartido:
         '''
         Constructor de la clase. Se define un numero identificador del gasto
         compartido, un nombre, una fecha en la que se produjo el gasto compartido,
-        una lista de usuarios y una lista comun de gastos
+        una lista de usuarios, una lista comun de gastos realizados por los usuarios,
+        y una lista de deudas entre usuarios
         '''
         self.__id = id
         self.__nombre = nombre
@@ -76,6 +81,35 @@ class gastoCompartido:
         self.__usuarios = self.__init__usuarios(usuarios)
         self.__gastos = []
 
+    #============================================================================
+        
+    def generarGasto(self,infoUsuario,importe,concepto):
+        '''
+        Metodo para generar un gasto realizado por un usuario
+        Param infoUsuario: Informacion de usuario que realiza gasto
+        Param importe: Cantidad del gasto
+        Param concepto: Descripcion del gasto
+        '''
+        pass
+
+    def borrarGastoPorNick(self,nick):
+        '''
+        Metodo para borrar todos los gastos realizados por un usuari
+        especificado por su nick
+        Param nick: Nick de usuario
+        '''
+        pass
+
+    def buscarGastosPorNick(self,nick):
+        '''
+        Metodo que permite buscar todos los gastos realizados por un
+        usuario especificado por su nick
+        Param nick: Nick de usuario
+        Return: Lista de gastos asociados al usuario. Si usuario no participa
+        en este gastoCompartido, se devuelve array vacio
+        '''
+        pass
+        
     #============================================================================
 
     def generarDeuda(self,nickURecibe,nickUPaga,importe,concepto):
