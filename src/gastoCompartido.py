@@ -103,6 +103,7 @@ class gastoCompartido:
         output = ""
 
         for usuario in self.__usuarios:
+            output += "Id: " + usuario.id + " || "
             output += "Nickname: " + usuario.nickname + " || "
             output += "Nombre: " + usuario.nickname + " || "
             output += "Apellidos: " + usuario.nickname + "\n"
@@ -120,6 +121,7 @@ class gastoCompartido:
         output = ""
 
         for gasto in self.__gastos:
+            output += "Id: " + gasto.id + " || "
             output += "Pagado por: " + gasto.nickUsuarioGasto() + " || "
             output += "Importe: " + gasto.importe + " || "
             output += "Concepto: " + gasto.concepto + "\n"
@@ -135,6 +137,7 @@ class gastoCompartido:
         output = ""
 
         for deuda in self.__deudas:
+            output += "Id: " + deuda.id + " || "
             output += "Fecha: " + deuda.obtenerFechaDeuda() + " || "
             output += "Importe: " + str(deuda.importe) + " || "
             output += "Concepto: " + deuda.concepto + " || "
