@@ -37,13 +37,13 @@ class usuario:
         self.__deudas.remove(deuda)
 
     #=================================================================
-
-    def obtenerNickUsuario(self):
+        
+    def obtenerInfoUsuario(self):
         '''
-        Recupera el nick del usuario
-        Return: nick usuario
+        Recupera la informacion completa asociada a un usuario
+        Return: informacion completa del usuario
         '''
-        return self.__usuario.nickname
+        return self.__usuario
     
     def obtenerListaDeudasString(self):
         '''
