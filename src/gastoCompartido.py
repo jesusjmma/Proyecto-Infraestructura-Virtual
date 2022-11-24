@@ -46,7 +46,12 @@ class gastoCompartido:
         Param nick: nickname del usuario a buscar
         Return: copia del usuario a buscar. None en otro caso
         '''
-        pass
+        usuarioCandidato = [usuario for usuario in self.__usuarios if usuario.nickname == nick]
+
+        if(usuarioCandidato):
+            return usuarioCandidato
+        else:
+            return None
 
     def __obtenerTotalGastos(self):
         '''
@@ -62,7 +67,9 @@ class gastoCompartido:
         gasto generado para este gasto compartido
         Return: numero identificador
         '''
-        pass
+        ultimoIndice = max([gasto.id for gasto in self.__gastos])
+
+        return ultimoIndice+1
     
 
     def __generarIDDeuda(self):
@@ -71,7 +78,9 @@ class gastoCompartido:
         generada para este gasto compartido
         Return: numero identificador
         '''
-        pass
+        ultimoIndice = max([deuda.id for deuda in self.__deudas])
+
+        return ultimoIndice+1
 
     def __generarIDUsuario(self):
         '''
@@ -79,7 +88,9 @@ class gastoCompartido:
         participante en este gasto compartido
         Return: numero identificador
         '''
-        pass
+        ultimoIndice = max([usuario.id for usuario in self.__usuarios])
+
+        return ultimoIndice+1
 
     #============================================================================
 
