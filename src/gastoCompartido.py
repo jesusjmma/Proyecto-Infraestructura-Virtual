@@ -46,10 +46,10 @@ class gastoCompartido:
         Param nick: nickname del usuario a buscar
         Return: copia del usuario a buscar. None en otro caso
         '''
-        usuarioCandidato = [usuario for usuario in self.__usuarios if usuario.nickname == nick]
+        usuarioCandidato = [usuario for usuario in self.__usuarios if usuario.obtenerInfoUsuario().nickname == nick.lower()]
 
         if(usuarioCandidato):
-            return usuarioCandidato
+            return usuarioCandidato[0]
         else:
             return None
 
@@ -67,7 +67,11 @@ class gastoCompartido:
         gasto generado para este gasto compartido
         Return: numero identificador
         '''
-        ultimoIndice = max([gasto.id for gasto in self.__gastos])
+        ultimoIndice = 0
+        
+        indices = [gasto.id for gasto in self.__gastos]
+        if indices:
+            ultimoIndice = max(indices)
 
         return ultimoIndice+1
     
@@ -78,7 +82,11 @@ class gastoCompartido:
         generada para este gasto compartido
         Return: numero identificador
         '''
-        ultimoIndice = max([deuda.id for deuda in self.__deudas])
+        ultimoIndice = 0
+
+        indices = [deuda.id for deuda in self.__deudas]
+        if indices:
+            ultimoIndice = max(indices)
 
         return ultimoIndice+1
 
@@ -88,7 +96,11 @@ class gastoCompartido:
         participante en este gasto compartido
         Return: numero identificador
         '''
-        ultimoIndice = max([usuario.id for usuario in self.__usuarios])
+        ultimoIndice = 0
+        
+        indices = [usuario.obtenerInfoUsuario().id for usuario in self.__usuarios]
+        if indices:
+            ultimoIndice = max(indices)
 
         return ultimoIndice+1
 
@@ -103,10 +115,11 @@ class gastoCompartido:
         output = ""
 
         for usuario in self.__usuarios:
-            output += "Id: " + usuario.id + " || "
-            output += "Nickname: " + usuario.nickname + " || "
-            output += "Nombre: " + usuario.nickname + " || "
-            output += "Apellidos: " + usuario.nickname + "\n"
+            infoUsuario = usuario.obtenerInfoUsuario()
+            output += "Id: " + str(infoUsuario.id) + " || "
+            output += "Nickname: " + infoUsuario.nickname + " || "
+            output += "Nombre: " + infoUsuario.nombre + " || "
+            output += "Apellidos: " + infoUsuario.apellidos + "\n"
 
         output += "\n"
 
@@ -121,7 +134,7 @@ class gastoCompartido:
         output = ""
 
         for gasto in self.__gastos:
-            output += "Id: " + gasto.id + " || "
+            output += "Id: " + str(gasto.id) + " || "
             output += "Pagado por: " + gasto.nickUsuarioGasto() + " || "
             output += "Importe: " + gasto.importe + " || "
             output += "Concepto: " + gasto.concepto + "\n"
@@ -137,7 +150,7 @@ class gastoCompartido:
         output = ""
 
         for deuda in self.__deudas:
-            output += "Id: " + deuda.id + " || "
+            output += "Id: " + str(deuda.id) + " || "
             output += "Fecha: " + deuda.obtenerFechaDeuda() + " || "
             output += "Importe: " + str(deuda.importe) + " || "
             output += "Concepto: " + deuda.concepto + " || "
@@ -286,4 +299,26 @@ class gastoCompartido:
         
 #Test de clase
 if __name__ == "__main__":
-    pass
+    #Objeto de prueba
+    gastoC1 = gastoCompartido(1, "Test")
+
+    #Test de insercion/Impresion de usuarios
+    gastoC1.registrarUsuario("danielsp","Daniel","Pérez Ruiz")
+    gastoC1.registrarUsuario("pnl","Pablo","Nieto López")
+    gastoC1.registrarUsuario("jac","Jose","Abela Canovas")
+
+
+    gastoC1.imprimirListaUsuarios()
+
+    #Test de borrado/Impresion de usuarios
+
+    gastoC1.eliminarUsuario("pnl")
+
+    gastoC1.imprimirListaUsuarios()
+
+    #Test de indices
+
+    gastoC1.registrarUsuario("manaya","Martin","Anaya Quesada")
+
+    gastoC1.imprimirListaUsuarios()
+
