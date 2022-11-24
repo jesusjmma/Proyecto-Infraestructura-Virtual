@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from datetime import datetime as dt
 from infoUsuario import infoUsuario
 
-@dataclass(frozen=False)
+@dataclass(frozen=True)
 class deuda:
     '''
     Clase que representa la deuda de un usuario a otro.

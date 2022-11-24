@@ -109,18 +109,4 @@ class usuario:
 
 #Test de clase
 if __name__ == "__main__":
-    infU1 = infoUsuario(1,"danielsp","Daniel","Pérez Ruiz")
-    infU2 = infoUsuario(2,"pnl","Pablo","Nieto López")
-    infU3 = infoUsuario(3,"jac","Jose","Abela Cánovas")
-
-    d1 = deuda(1,infU2,infU1,10.5,"test deuda1")
-    d2 = deuda(2,infU2,infU3,5.5,"test deuda2")
-    d3 = deuda(1,infU3,infU1,7.70,"test deuda3")
-
-    u1 = usuario(infU1)
-
-    u1.insertarDeuda(d1)
-    u1.insertarDeuda(d2)
-    u1.insertarDeuda(d3)
-
-    print(u1)
+    pass

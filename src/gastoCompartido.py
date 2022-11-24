@@ -243,6 +243,14 @@ class gastoCompartido:
         if(usuarioCandidato is not None):
             return self.__buscarGastosPorNick(nickname)
         
+    def obtenerUsuarios(self):
+        '''
+        Metodo que devuelve una copia de la lista de usuarios del gasto
+        compartido.
+        Return: Lista de usuarios (copia)
+        '''
+        return [usuario for usuario in self.__usuario]
+        
     #============================================================================
 
     def generarDeuda(self,nickURecibe,nickUPaga,importe,concepto):
@@ -308,30 +316,4 @@ class gastoCompartido:
         
 #Test de clase
 if __name__ == "__main__":
-    #Objeto de prueba
-    gastoC1 = gastoCompartido(1, "Test")
-
-    #Test de insercion/Impresion de usuarios
-    gastoC1.registrarUsuario("danielsp","Daniel","Pérez Ruiz")
-    gastoC1.registrarUsuario("pnl","Pablo","Nieto López")
-    gastoC1.registrarUsuario("jac","Jose","Abela Canovas")
-    #gastoC1.registrarUsuario("manaya","Martin","Anaya Quesada")
-
-
-    gastoC1.imprimirListaUsuarios()
-
-    #Test de generacion de gastos
-
-    gastoC1.generarGasto("danielsp",5.75,"Comida")
-    gastoC1.generarGasto("pnl",20,"Alquiler")
-    gastoC1.generarGasto("jac",3,"Kebab")
-    gastoC1.generarGasto("danielsp",11,"Gasolina")
-    gastoC1.generarGasto("danielsp",0.50,"Peaje")
-    gastoC1.generarGasto("manaya",100,"Fiesta")
-
-
-    gastoC1.imprimirListaGastos()
-
-    gastoC1.generarDeuda("danielsp","pnl",20,"Test")
-
-    gastoC1.imprimirListaDeudas()
+    pass

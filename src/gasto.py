@@ -14,9 +14,6 @@ class gasto:
     importe: float
     concepto: str
 
-    #Fecha en la que se produce la deuda (generada tras inicializacion)
-    #fecha: dt = field(init=False, repr=True)
-
     def __str__(self):
         '''
         Representacion de la clase a formato legible
