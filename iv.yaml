@@ -1,2 +1,4 @@
 lenguaje: python3
 entidad:
+	- src/usuario.py
+	- src/gastoCompartido.py
