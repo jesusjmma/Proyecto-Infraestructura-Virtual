@@ -14,18 +14,6 @@ class gastoCompartido:
     
     #============================================================================
 
-    def __init__usuarios(self, usuarios):
-        '''
-        Copia una lista de usuarios en otra lista
-        (evita duplicado de punteros)
-        Return: copia de usuarios
-        '''
-        listaUsuarios = []
-        for usuario in usuarios:
-            usuarios.append(usuario)
-
-        return listaUsuarios
-
     def __obtenerNicksUsuarios(self):
         '''
         Para la lista de usuarios que participan en el gasto compartido,
@@ -61,7 +49,7 @@ class gastoCompartido:
         '''
         self.__id = id
         self.__nombre = nombre
-        self.__usuarios = self.__init__usuarios(usuarios)
+        self.__usuarios = [usuario for usuario in usuarios]
         self.__gastos = []
         self.__deudas = []
 
