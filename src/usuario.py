@@ -9,7 +9,7 @@ class usuario:
     
     def __init__(self, u, deudas=[]):
         self.__usuario = u
-        self.__deudas = [deuda for deuda in deudas if deuda.nickUsuarioQuePaga() == self.__usuario.nickname]
+        self.__deudas = [deuda for deuda in deudas if deuda.usuarioDeudor.nickname == self.__usuario.nickname]
 
 #Test de clase
 if __name__ == "__main__":
