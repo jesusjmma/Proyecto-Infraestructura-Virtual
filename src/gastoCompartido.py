@@ -24,19 +24,6 @@ class gastoCompartido:
 
         return nicks
     
-    def __buscarUsuarioPorNick(self,nick):
-        '''
-        Para la lista de usuarios que participan en el gasto compartido,
-        se permite buscar un usuario a traves de su nick
-        Param nick: nickname del usuario a buscar
-        Return: copia del usuario a buscar. None en otro caso
-        '''
-        usuarioCandidato = [usuario for usuario in self.__usuarios if usuario.obtenerInfoUsuario().nickname == nick.lower()]
-
-        if(usuarioCandidato):
-            return usuarioCandidato[0]
-        else:
-            return None
     
     #============================================================================
 
@@ -52,68 +39,6 @@ class gastoCompartido:
         self.__usuarios = [usuario for usuario in usuarios]
         self.__gastos = []
         self.__deudas = []
-
-    #============================================================================
-        
-    def registrarUsuario(self,nickname,nombre,apellidos):
-        '''
-        Metodo para registrar usuarios participantes en este gasto compartido
-        Param nickname: Nick del nuevo usuario participante
-        Param nombre: Nombre del nuevo usuario participante
-        Param apellidos: Apellidos del nuevo usuario participante
-
-        Precond: Si el nickname del usuario ya existe, no se registra
-        '''
-        if(self.__buscarUsuarioPorNick(nickname) is None):
-            idNuevoUsuario = self.__generarIDUsuario()
-            self.__usuarios.append(usuario(infoUsuario(idNuevoUsuario,nickname,nombre,apellidos)))
-
-    #============================================================================
-        
-    def generarGasto(self,nickname,importe,concepto):
-        '''
-        Metodo para generar un gasto realizado por un usuario
-        Param nickname: Nickname del usuario que genera el gasto
-        Param importe: Cantidad del gasto
-        Param concepto: Descripcion del gasto
-
-        Precond: si el nick del usuario no se encuentra dentro de los usuarios
-        participantes, no se almacenara el nuevo gasto
-        '''
-        usuarioCandidato = self.__buscarUsuarioPorNick(nickname)
-        if(usuarioCandidato is not None):
-            idNuevoGasto = self.__generarIDGasto()
-            self.__gastos.append(gasto(idNuevoGasto,usuarioCandidato.obtenerInfoUsuario(),importe,concepto))
-        
-    def obtenerUsuarios(self):
-        '''
-        Metodo que devuelve una copia de la lista de usuarios del gasto
-        compartido.
-        Return: Lista de usuarios (copia)
-        '''
-        return [usuario for usuario in self.__usuario]
-        
-    #============================================================================
-
-    def generarDeuda(self,nickURecibe,nickUPaga,importe,concepto):
-        '''
-        Dentro de los usuarios que participan en el gasto compartido, este
-        metodo permite generar una deuda comun que se insertara a la lista
-        de deudas
-        Param nickURecibe: nickname del usuario al que hay que pagar
-        Param nickUPaga: nickname del usuario que paga la deuda
-        Param importe: importe de la deuda
-        Param concepto: concepto de la deuda
-
-        Precond: Si alguno de los dos nicks son de usuarios que no participan,
-        la insercion de la deuda no sera realizada
-        '''
-        if nickURecibe in self.__obtenerNicksUsuarios() and nickUPaga in self.__obtenerNicksUsuarios():
-            idDeuda = self.__generarIDDeuda()
-            usuarioDeber = self.__buscarUsuarioPorNick(nickURecibe).obtenerInfoUsuario()
-            usuarioDeudor = self.__buscarUsuarioPorNick(nickUPaga).obtenerInfoUsuario()
-            
-            self.__deudas.append(deuda(idDeuda,usuarioDeber,usuarioDeudor,importe,concepto))
         
 #Test de clase
 if __name__ == "__main__":
