@@ -8,7 +8,3 @@ class infoUsuario:
     nickname: str
     nombre: str
     apellidos: str
-    
-#Test de clase
-if __name__ == "__main__":
-    pass

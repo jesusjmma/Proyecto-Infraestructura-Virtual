@@ -11,7 +11,3 @@ class deuda:
 
     importe: float
     concepto: str
-        
-#Test de clase
-if __name__ == "__main__":
-    pass

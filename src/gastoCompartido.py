@@ -19,7 +19,3 @@ class gastoCompartido:
         self.__usuarios = [usuario for usuario in usuarios]
         self.__gastos = [gasto for gasto in gastos]
         self.__deudas = [deuda for deuda in deudas]
-        
-#Test de clase
-if __name__ == "__main__":
-    pass
