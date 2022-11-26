@@ -8,14 +8,6 @@ class infoUsuario:
     nickname: str
     nombre: str
     apellidos: str
-
-    def __str__(self):
-        output = ""
-        output += " -- Nickname: " + self.nickname + "\n"
-        output += " -- Nombre: " + self.nombre + "\n"
-        output += " -- Apellidos: " + self.apellidos + "\n"
-
-        return output
     
 #Test de clase
 if __name__ == "__main__":
