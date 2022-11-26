@@ -7,15 +7,9 @@ class usuario:
     y con la informacion de todas las deudas que tiene pendientes
     '''
     
-    def __init__(self, u):
+    def __init__(self, u, deudas=[]):
         self.__usuario = u
-        self.__deudas = []
-
-    #=================================================================
-    
-    def insertarDeuda(self, deuda):
-        if(deuda.nickUsuarioQuePaga() == self.obtenerNickUsuario()):
-            self.__deudas.append(deuda)
+        self.__deudas = [deuda for deuda in deudas if deuda.nickUsuarioQuePaga() == self.__usuario.nickname]
 
 #Test de clase
 if __name__ == "__main__":
