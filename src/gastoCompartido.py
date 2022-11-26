@@ -68,19 +68,6 @@ class gastoCompartido:
             idNuevoUsuario = self.__generarIDUsuario()
             self.__usuarios.append(usuario(infoUsuario(idNuevoUsuario,nickname,nombre,apellidos)))
 
-
-    def eliminarUsuario(self,nickname):
-        '''
-        Metodo para eliminar usuarios participantes en el gasto a traves de nick
-        Param nickname: Nick del usuario a eliminar
-
-        Precond: Si el nick no pertenece a ningun usuario presente, no se borra nada
-        '''
-
-        usuarioCandidato = self.__buscarUsuarioPorNick(nickname)
-        if(usuarioCandidato is not None):
-            self.__usuarios.remove(usuarioCandidato)
-
     #============================================================================
         
     def generarGasto(self,nickname,importe,concepto):
@@ -97,18 +84,6 @@ class gastoCompartido:
         if(usuarioCandidato is not None):
             idNuevoGasto = self.__generarIDGasto()
             self.__gastos.append(gasto(idNuevoGasto,usuarioCandidato.obtenerInfoUsuario(),importe,concepto))
-
-    def obtenerGastosPorNick(self,nickname):
-        '''
-        Metodo que permite buscar todos los gastos realizados por un
-        usuario especificado por su nick
-        Param nick: Nick de usuario
-        Return: Lista de gastos asociados al usuario. Si usuario no participa
-        en este gastoCompartido, se devuelve None
-        '''
-        usuarioCandidato = self.__buscarUsuarioPorNick(nickname)
-        if(usuarioCandidato is not None):
-            return self.__buscarGastosPorNick(nickname)
         
     def obtenerUsuarios(self):
         '''
