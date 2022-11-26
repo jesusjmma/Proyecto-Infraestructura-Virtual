@@ -21,9 +21,12 @@ class usuario:
         self.__deudas.remove(deuda)
 
     #=================================================================
-        
+    
     def obtenerInfoUsuario(self):
         return self.__usuario
+    
+    def obtenerListaDeudas(self):
+        return [deuda for deuda in self.__deudas]
     
     def obtenerListaDeudasString(self):
         output = ""
