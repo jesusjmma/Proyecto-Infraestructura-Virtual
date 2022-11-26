@@ -2,7 +2,6 @@ from usuario import usuario
 from infoUsuario import infoUsuario
 from deuda import deuda
 from gasto import gasto
-from datetime import datetime as dt
 
 class gastoCompartido:
     '''
@@ -62,7 +61,6 @@ class gastoCompartido:
         '''
         self.__id = id
         self.__nombre = nombre
-        self.__fecha = dt.today()
         self.__usuarios = self.__init__usuarios(usuarios)
         self.__gastos = []
         self.__deudas = []
