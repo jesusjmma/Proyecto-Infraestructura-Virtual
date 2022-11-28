@@ -3,7 +3,7 @@ from gasto import gasto
 class usuario:
 
     def __init__(self,nickname,gastos=[]):
-        self.__nickname = nickname
+        self.__nickname = nickname.lower()
         self.__gastos = [gasto for gasto in gastos if self.__nickname in gasto.nicksParticipantes]
 
     
