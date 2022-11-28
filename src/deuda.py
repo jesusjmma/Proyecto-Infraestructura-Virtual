@@ -8,4 +8,9 @@ class deuda:
     quien paga), además del concepto, importe, y un atributo que comprueba
     si se ha pagado la deuda o no
     '''
-    pass
+    usuarioRecibe: str
+    usuarioPaga: str
+    concepto: str
+    importe: float
+    pagado: bool
+    
