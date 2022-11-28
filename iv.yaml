@@ -1,4 +1,1 @@
 lenguaje: python
-entidad:
-  - src/usuario.py
-  - src/gastoCompartido.py
