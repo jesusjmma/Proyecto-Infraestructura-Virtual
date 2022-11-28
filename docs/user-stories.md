@@ -11,7 +11,7 @@ Lucas necesita poder reducir la cantidad de pagos que realiza con sus compañero
 
 Enlace al issue: [HU2](https://github.com/jesusjmma/Proyecto-Infraestructura-Virtual/issues/3)
 
-María Teresa necesita poder controlar las diferentes veces que ella le paga dinero a sus amigas y llevar la cuenta de quien se lo va devolviendo. Necesita poder filtrar los gastos que ha tenido el usuario por diferentes condiciones (persona con la que comparte el gasto, dinero a favor o en contra, etc.) así como generar y visualizar los gráficos de los gastos compartidos.
+María Teresa necesita poder controlar las diferentes veces que ella le paga dinero a sus amigas y llevar la cuenta de quien se lo va devolviendo. Necesita poder filtrar los gastos que ha tenido el usuario por diferentes condiciones (persona con la que comparte el gasto, dinero a favor o en contra, etc.) así como generar los gráficos de los gastos compartidos.
 
 
 ## José Antonio Maleno
