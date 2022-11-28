@@ -7,4 +7,7 @@ class gasto:
     un identificador del usuario que paga, un importe, un concepto, y
     una lista de usuarios involucrados en este gasto
     '''
-    pass
+    usuarioPagador: str
+    concepto: str
+    importe: float
+    participantes: list
